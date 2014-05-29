@@ -17,6 +17,6 @@ test('split some buffers', function (t) {
   t.deepEqual(bsplitter(text, new Buffer('oc')).length, 3);
   t.deepEqual(bsplitter(text, new Buffer('the')).length, 2);
   t.deepEqual(bsplitter(text).length, 1, 'the separator is omitted');
-  //t.deepEqual(bsplitter(text, new Buffer('')).length, text.length,
-              //'separator is an empty buffer, the is gonna to split the buffer in single buffers, like split(\'\')');
+  t.deepEqual(bsplitter(text, new Buffer('')).length, text.length,
+              'separator is an empty buffer, the is gonna to split the buffer in single buffers, like split(\'\')');
 });

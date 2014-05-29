@@ -4,19 +4,17 @@ var search = require('buffer-search');
 
 function separatorEmpty (buffer) {
   var res = [];
-
   for (var i = 0; i < buffer.length; i++)
     res.push(buffer.slice(i, i + 1));
-
   return res;
 }
 
 module.exports = splitter;
 
 function splitter (buffer, separator) {
-  // separator undefined return all buffer in a
-  // single array
-  if (typeof separator === undefined) return res[buffer];
+  // separator is undefined then return all buffer
+  // in a single array
+  if (typeof separator === 'undefined') return [buffer];
   // 'separator is an empty buffer, is gonna to split
   // the buffer in single buffers, like split(\'\')
   // and return an array

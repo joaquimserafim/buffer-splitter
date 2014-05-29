@@ -4,8 +4,7 @@
   "description": "splits a Buffer into an array of buffers ",
   "main": "index.js",
   "dependencies": {
-    "buffer-search": "^1.2.0",
-    "tape": "^2.13.1"
+    "buffer-search": "^1.2.0"
   },
   "devDependencies": {
     "tape": "^2.13.1"
