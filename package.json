@@ -1,0 +1,30 @@
+{
+  "name": "buffer-splitter",
+  "version": "1.0.0",
+  "description": "splits a Buffer into an array of buffers ",
+  "main": "index.js",
+  "dependencies": {
+    "buffer-search": "^1.2.0",
+    "tape": "^2.13.1"
+  },
+  "devDependencies": {
+    "tape": "^2.13.1"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joaquimserafim/buffer-splitter.git"
+  },
+  "keywords": [
+    "buffer",
+    "split"
+  ],
+  "author": "@joaquimserafim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaquimserafim/buffer-splitter/issues"
+  },
+  "homepage": "https://github.com/joaquimserafim/buffer-splitter"
+}
