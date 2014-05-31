@@ -1,7 +1,6 @@
 var search = require('buffer-search');
 
 
-
 function separatorEmpty (buffer) {
   var res = [];
   for (var i = 0; i < buffer.length; i++)
