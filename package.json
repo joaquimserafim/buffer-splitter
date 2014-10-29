@@ -1,17 +1,25 @@
 {
   "name": "buffer-splitter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "splits a Buffer into an array of buffers ",
   "main": "index.js",
   "dependencies": {
-    "buffer-search": "^1.2.0"
+    "bindexof": "^1.0.1"
   },
   "devDependencies": {
     "bench": "^0.3.5",
-    "tape": "^2.13.1"
+    "buffer-split": "0.0.0",
+    "istanbul": "^0.3.2",
+    "jscs": "^1.7.3",
+    "jshint": "^2.5.7",
+    "pre-commit": "0.0.9",
+    "tape": "^2.14.0"
   },
   "scripts": {
-    "test": "node test.js",
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/tape/bin/tape test.js && ./node_modules/istanbul/lib/cli.js check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "jshint": "./node_modules/jshint/bin/jshint -c .jshintrc index.js test.js",
+    "codestyle": "./node_modules/jscs/bin/jscs -p google index.js test.js",
+    "coverage": "open coverage/lcov-report/index.html",
     "bench": "node bench.js"
   },
   "repository": {
@@ -27,5 +35,10 @@
   "bugs": {
     "url": "https://github.com/joaquimserafim/buffer-splitter/issues"
   },
-  "homepage": "https://github.com/joaquimserafim/buffer-splitter"
+  "homepage": "https://github.com/joaquimserafim/buffer-splitter",
+  "pre-commit": [
+    "jshint",
+    "codestyle",
+    "test"
+  ]
 }

@@ -1,10 +1,15 @@
-var assert = require('assert');
+'use strict';
+
 var bench = require('bench');
 var split = require('./');
 
+var bbsplit = require('buffer-split');
 
-
-var text = 'Node.js is a platform built on Chrome\'s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.';
+var text = 'Node.js is a platform built on Chrome\'s JavaScript' +
+  ' runtime for easily building fast, scalable network applications.' +
+  ' Node.js uses an event-driven, non-blocking I/O model that makes ' +
+  'it lightweight and efficient, perfect for data-intensive real-time' +
+  ' applications that run across distributed devices.';
 
 var buffer = new Buffer(text);
 var bempty = new Buffer('');
@@ -22,6 +27,12 @@ exports.compare = {
   },
   'using normal string split - split by "a"': function () {
     text.split('a');
+  },
+  'using buffer-split - separator empty': function () {
+    bbsplit(buffer, bempty);
+  },
+  'using buffer-split - split by "a"': function () {
+    bbsplit(buffer, bchar);
   }
 };
 

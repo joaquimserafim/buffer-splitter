@@ -1,32 +1,38 @@
-var search = require('buffer-search');
+'use strict';
 
+var bindexOf = require('bindexof');
 
-function separatorEmpty (buffer) {
+function separatorEmpty(buffer) {
   var res = [];
-  for (var i = 0; i < buffer.length; i++)
-    res.push(buffer.slice(i, i + 1));
+  for (var i = 0; i < buffer.length; i++) {
+    res.push(buffer[i]);
+  }
   return res;
 }
 
 module.exports = splitter;
 
-function splitter (buffer, separator) {
-  // separator is undefined then return all buffer
-  // in a single array
-  if (typeof separator === 'undefined') return [buffer];
-  // 'separator is an empty buffer, is gonna to split
-  // the buffer in single buffers, like split(\'\')
-  // and return an array
-  if (!separator.length) return separatorEmpty(buffer);
+function splitter(buffer, separator) {
+  if (typeof separator === 'undefined') {
+    // separator is undefined then return all buffer
+    // in a single array
+    return [buffer];
+  } else if (!separator.length) {
+    // 'separator is an empty buffer, is gonna to split
+    // the buffer in single buffers, like split(\'\')
+    // and return an array
+    return separatorEmpty(buffer);
+  } else {
+    var index = 0;
+    var res   = [];
+    var find  = 0;
 
-  var index = 0;
-  var res = [];
-  var find = 0;
+    while ((find = bindexOf(buffer, separator, index)) > -1) {
+      res.push(buffer.slice(index, find));
+      index = find + separator.length;
+    }
 
-  while ((find = search(buffer, separator, index)) > -1) {
-    res.push(buffer.slice(index, find));
-    index = find + separator.length;
+    res.push(buffer.slice(index));
+    return res;
   }
-  res.push(buffer.slice(index));
-  return res;
 }
