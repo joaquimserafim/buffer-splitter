@@ -32,7 +32,7 @@ When found, separator is removed from the buffer and the subbuffers are returned
 	
 	var separator = new Buffer('a');
 	
-	var res = bsplitter();
+	var res = bsplitter(buffer, separator);
 	console.log(res);
 		
 	[
