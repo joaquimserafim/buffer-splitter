@@ -23,7 +23,7 @@ tape('split some buffers', function(assert) {
 
   var bArray = bsplitter(buff, new Buffer(''));
   var sArray = text.split('');
- 
+
   assert.equal(bArray.map(function(b) {return new Buffer([b]);}).join(''),
     sArray.join(''));
 
